@@ -49,11 +49,9 @@ for i = 3:length(main_proj_folders)
     
     % If no match is found, prompt the user to manually map the folder
     if ~isKey(mapping_results, main_folder_path)
-        prompt = sprintf('Please provide the template folder path for the main project folder:\n%s', main_folder_name);
-        dlgtitle = 'Manual Folder Mapping';
-        dims = [1 100];
-        answer = inputdlg(prompt, dlgtitle, dims);
-        mapping_results(main_folder_path) = answer{1};
+        message = sprintf('Please select the template folder path for the main project folder:\n%s', main_folder_name);
+        mapping_results(main_folder_path) = uigetdir('',message);
+
     end
 end
 % Create a cell array to store the mapping results
